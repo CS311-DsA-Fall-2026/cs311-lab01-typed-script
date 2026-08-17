@@ -14,16 +14,27 @@ from container import TypedContainer
 ASSIGNMENT_ID = "LAB01"
 
 
-def generate_token(assignment_id: str) -> str:
-    digest = hashlib.sha256(f"CS311-{assignment_id}-VERIFIED".encode()).hexdigest()[:16]
-    raw = f"CS311|{assignment_id}|PASS|{digest}"
+def get_student_id() -> str:
+    """Prompt for the student's USI username; baked into the Success Token
+    so a copied/shared token decodes to someone else's name, not yours."""
+    student_id = input("Enter your USI username (e.g. cwill): ").strip()
+    while not student_id:
+        student_id = input("Username cannot be blank. Enter your USI username: ").strip()
+    return student_id
+
+
+def generate_token(assignment_id: str, student_id: str) -> str:
+    digest = hashlib.sha256(f"CS311-{assignment_id}-{student_id}-VERIFIED".encode()).hexdigest()[:16]
+    raw = f"CS311|{assignment_id}|{student_id}|PASS|{digest}"
     return base64.b64encode(raw.encode()).decode()
 
 
 def print_success_banner(assignment_id: str) -> None:
-    token = generate_token(assignment_id)
+    student_id = get_student_id()
+    token = generate_token(assignment_id, student_id)
     print("\n" + "=" * 60)
     print(f"  ALL CHECKS PASSED -- {assignment_id}")
+    print(f"  STUDENT: {student_id}")
     print("  SUCCESS TOKEN (paste this into Blackboard):")
     print(f"  {token}")
     print("=" * 60 + "\n")

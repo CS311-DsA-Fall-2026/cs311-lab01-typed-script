@@ -13,9 +13,10 @@ cd <your-repo-folder>
 python test_container.py
 ```
 
-Complete `container.py` until every check above prints `PASS`. The
-Success Token only appears when all checks pass -- paste it into the
-Blackboard textbox for this lab for credit.
+Complete `container.py` until every check above prints `PASS`. Once
+everything passes, the script asks for your USI username and prints a
+Success Token tied to it -- paste the token into the Blackboard textbox
+for this lab for credit.
 
 ## Submit
 1. `Lab1_Theory.pdf` (or `.md`) -- Part A, uploaded to Blackboard
