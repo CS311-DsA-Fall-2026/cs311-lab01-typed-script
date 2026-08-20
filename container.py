@@ -1,7 +1,7 @@
 """
 Lab 1: The Typed Script -- TypedContainer starter.
 
-Complete TypedContainer below. See Lab_01_The_Typed_Script.md, Part B,
+Complete TypedContainer below. See the assignment, Part B,
 for the full requirements. Do not rename the class or its methods --
 test_container.py imports them by name.
 """
